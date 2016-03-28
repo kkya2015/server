@@ -29,6 +29,9 @@ var app = http.createServer(function(req, res) {
         console.log('headers -- ' + JSON.stringify(headers))
         if (method == "POST") {
             var data = settings.body;
+            if(!data){
+                data = settings.form.values;
+            }
             console.log(data)
             request.post({
                 url: url,
